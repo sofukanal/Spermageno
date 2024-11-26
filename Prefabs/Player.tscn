@@ -1,0 +1,138 @@
+[gd_scene load_steps=16 format=3 uid="uid://dy0tlajcwgj0s"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_nq15l"]
+[ext_resource type="Texture2D" uid="uid://ctjte2hnaqj0a" path="res://Sprites/Player/Player2.png" id="2_81paj"]
+[ext_resource type="Texture2D" uid="uid://c81bv1wrtyvmm" path="res://Sprites/Player/Player1.png" id="3_1wriq"]
+[ext_resource type="Texture2D" uid="uid://dw4qhf03mo2k2" path="res://Sprites/Player/Player3.png" id="4_fj6qb"]
+[ext_resource type="Texture2D" uid="uid://cnhlgvonesqn" path="res://Sprites/Lightmaps/lightmap_torch.png" id="5_grn3i"]
+[ext_resource type="Texture2D" uid="uid://btdm88tnqejjs" path="res://Sprites/UI/healthbar.png" id="6_joogp"]
+[ext_resource type="AudioStream" uid="uid://c4oktph5q6mpj" path="res://Sounds/Effects/HurtSound.mp3" id="6_xqo1p"]
+[ext_resource type="AudioStream" uid="uid://bh7kmy5avg2q" path="res://Sounds/Effects/DieSound.mp3" id="7_owvle"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6cw7x"]
+radius = 14.0
+height = 60.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1yh2e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_81paj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1wriq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fj6qb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1wriq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vv8h"]
+atlas = ExtResource("6_joogp")
+region = Rect2(0, 96, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odbqf"]
+atlas = ExtResource("6_joogp")
+region = Rect2(0, 64, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbwic"]
+atlas = ExtResource("6_joogp")
+region = Rect2(0, 32, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_288df"]
+atlas = ExtResource("6_joogp")
+region = Rect2(0, 0, 96, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g88cf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vv8h")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odbqf")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbwic")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_288df")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+texture_filter = 1
+collision_layer = 2
+script = ExtResource("1_nq15l")
+
+[node name="PlayerBody" type="CollisionShape2D" parent="."]
+position = Vector2(32, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_6cw7x")
+
+[node name="AnimatedBody" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_1yh2e")
+frame = 1
+frame_progress = 0.410336
+
+[node name="Camera" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+
+[node name="Light" type="PointLight2D" parent="."]
+position = Vector2(32, 0)
+scale = Vector2(2.2, 2.2)
+texture = ExtResource("5_grn3i")
+
+[node name="HurtAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_xqo1p")
+pitch_scale = 0.87
+
+[node name="DieAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_owvle")
+pitch_scale = 0.86
+
+[node name="PlayerUI" type="CanvasLayer" parent="."]
+layer = 9
+
+[node name="AnimatedHealth2D" type="AnimatedSprite2D" parent="PlayerUI"]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_g88cf")
+animation = &"3"
+centered = false
+offset = Vector2(16, 486)
+
+[node name="PlayerHitbox" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
+position = Vector2(32, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_6cw7x")

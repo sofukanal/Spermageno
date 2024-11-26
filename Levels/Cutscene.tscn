@@ -1,0 +1,95 @@
+[gd_scene load_steps=4 format=3 uid="uid://drky14e70216u"]
+
+[ext_resource type="AudioStream" uid="uid://111cr8jsmfrn" path="res://Sounds/Cutscenes/CutsceneVoiceover.mp3" id="1_0pkr7"]
+[ext_resource type="Script" path="res://Scripts/cutscene.gd" id="1_e7gkw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tyro2"]
+font_size = 50
+
+[node name="Cutscene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_e7gkw")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_0pkr7")
+
+[node name="TextLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 960.0
+offset_top = 540.0
+offset_right = 961.0
+offset_bottom = 563.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Welcome to the beginning of an incredible journey..."
+label_settings = SubResource("LabelSettings_tyro2")
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="Timer1" type="Timer" parent="."]
+wait_time = 1.8
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 5.2
+one_shot = true
+
+[node name="Timer3" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
+
+[node name="Timer4" type="Timer" parent="."]
+wait_time = 8.5
+one_shot = true
+
+[node name="Timer5" type="Timer" parent="."]
+wait_time = 9.2
+one_shot = true
+
+[node name="Timer6" type="Timer" parent="."]
+wait_time = 10.6
+one_shot = true
+
+[node name="Timer7" type="Timer" parent="."]
+wait_time = 12.9
+one_shot = true
+
+[node name="Timer8" type="Timer" parent="."]
+wait_time = 14.1
+one_shot = true
+
+[node name="Timer9" type="Timer" parent="."]
+wait_time = 16.2
+one_shot = true
+
+[node name="Timer10" type="Timer" parent="."]
+wait_time = 19.6
+one_shot = true
+
+[node name="Timer11" type="Timer" parent="."]
+wait_time = 20.4
+one_shot = true
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+[connection signal="timeout" from="Timer1" to="." method="_on_timer_1_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Timer3" to="." method="_on_timer_3_timeout"]
+[connection signal="timeout" from="Timer4" to="." method="_on_timer_4_timeout"]
+[connection signal="timeout" from="Timer5" to="." method="_on_timer_5_timeout"]
+[connection signal="timeout" from="Timer6" to="." method="_on_timer_6_timeout"]
+[connection signal="timeout" from="Timer7" to="." method="_on_timer_7_timeout"]
+[connection signal="timeout" from="Timer8" to="." method="_on_timer_8_timeout"]
+[connection signal="timeout" from="Timer9" to="." method="_on_timer_9_timeout"]
+[connection signal="timeout" from="Timer10" to="." method="_on_timer_10_timeout"]
+[connection signal="timeout" from="Timer11" to="." method="_on_timer_11_timeout"]

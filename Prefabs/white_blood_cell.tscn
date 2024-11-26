@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://ixx0vydv12ks"]
+
+[ext_resource type="Script" path="res://Scripts/white_blood_cell.gd" id="1_gbnjr"]
+[ext_resource type="Texture2D" uid="uid://2fhjfee4uobd" path="res://Sprites/Enemies/WhiteBloodCell.png" id="2_re46q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s4b6w"]
+radius = 35.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6m3qd"]
+radius = 34.0147
+
+[node name="WhiteBloodCell" type="Area2D"]
+script = ExtResource("1_gbnjr")
+horizontal_speed = 0.0
+horizontal_amplitude = 0.0
+vertical_speed = 0.0
+vertical_amplitude = 0.0
+
+[node name="BodySprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_re46q")
+
+[node name="WhiteBloodCellBody" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_s4b6w")
+
+[node name="WhiteBloodCellArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WhiteBloodCellArea"]
+shape = SubResource("CircleShape2D_6m3qd")
+
+[connection signal="area_entered" from="WhiteBloodCellArea" to="." method="_on_white_blood_cell_area_area_entered"]

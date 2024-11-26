@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://2txsnuluc2is"
+path="res://.godot/imported/Found the egg.mp3-78119441fb9ae54669df65eba367c5d7.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Tutorial/Found the egg.mp3"
+dest_files=["res://.godot/imported/Found the egg.mp3-78119441fb9ae54669df65eba367c5d7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

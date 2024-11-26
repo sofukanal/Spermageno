@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://di5ltxf3xrepw"
+path="res://.godot/imported/Entering the Fallopian tube.mp3-273906a057ee753ff02011f25902b2e3.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Tutorial/Entering the Fallopian tube.mp3"
+dest_files=["res://.godot/imported/Entering the Fallopian tube.mp3-273906a057ee753ff02011f25902b2e3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
