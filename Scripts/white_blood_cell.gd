@@ -2,16 +2,27 @@ extends Area2D
 
 const damage = 1
 
-@export var horizontal_speed: float = 10.0  # Speed at which the white blood cell moves up and down
-@export var horizontal_amplitude: float = 100.0  # Maximum distance (up and down) it moves
-@export var vertical_speed: float = 10.0  # Speed at which the white blood cell moves up and down
-@export var vertical_amplitude: float = 100.0  # Maximum distance (up and down) it moves
+@export_range(0.5, 2.0) var min_horizontal_amplitude: float = 50
+@export_range(0.5, 2.0) var max_horizontal_amplitude: float = 120
+@export_range(0.5, 2.0) var min_vertical_amplitude: float = 50
+@export_range(0.5, 2.0) var max_vertical_amplitude: float = 120
+@export_range(0.5, 3.0) var min_speed: float = 40
+@export_range(0.5, 3.0) var max_speed: float = 200
+
+var horizontal_speed: float = 10.0  # Speed at which the white blood cell moves up and down
+var horizontal_amplitude: float = 100.0  # Maximum distance (up and down) it moves
+var vertical_speed: float = 10.0  # Speed at which the white blood cell moves up and down
+var vertical_amplitude: float = 100.0  # Maximum distance (up and down) it moves
 
 var base_position: Vector2 = Vector2.ZERO
 var time_passed: float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	horizontal_speed = randf_range(min_speed, max_speed)
+	horizontal_amplitude = randf_range(min_horizontal_amplitude, max_horizontal_amplitude)
+	vertical_speed = randf_range(min_speed, max_speed)
+	vertical_amplitude = randf_range(min_vertical_amplitude, max_vertical_amplitude)
 	base_position = position  # Store the starting position
 
 # Called every frame
